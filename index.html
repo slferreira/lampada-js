@@ -1,0 +1,54 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lâmpada</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var quebrada = false; //variavel do tipo boolean
+        //muda a lampada
+        function mudaLampada(valor) {
+            if (valor == 1) {
+                arquivo = "assets/lampada-apagada.png";
+                chave = "assets/switch-off.png";
+                interruptor.setAttribute("onclick", "mudaLampada(2)");
+            }
+            if (valor == 2) {
+                arquivo = "assets/lampada-acesa.png";
+                chave = "assets/switch-on.png";
+                interruptor.setAttribute("onclick", "mudaLampada(1)");
+            }
+            if (valor == 3) {
+                arquivo = "assets/lampada-quebrada.png";
+            }
+            document.getElementById("interruptor").src = chave;
+            if (!quebrada) {
+                document.getElementById("lampada").src = arquivo;
+                if (valor == 3) {
+                    quebrada = true;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="title">
+            <h1>Utilize o interruptor para acender a lâmpada</h1>
+            <h3>Cuidado! Não toque na lâmpada!</h3>
+        </div>
+        <div class="bulb">
+            <img src="assets/lampada-apagada.png" alt="" id="lampada" onclick="mudaLampada(3)">
+
+        </div>
+        <div class="switch">
+            <img src="assets/switch-off.png" alt="" id="interruptor" onclick="mudaLampada(2)">
+
+
+        </div>
+    </div>
+</body>
+
+</html>
